@@ -12,6 +12,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+VOLUME /data
+
 EXPOSE 8080
 
 CMD python pywb-webrecorder.py

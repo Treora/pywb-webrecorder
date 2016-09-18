@@ -2,17 +2,17 @@
 # ========================================
 #
 recorder:
-    record_dir: &record_dir ./recording/
-    record_cdx: &record_cdx ./recording/index.cdx
+    record_dir: &record_dir /data/recording/
+    record_cdx: &record_cdx /data/recording/index.cdx
 
-    done_dir: &done_dir ./done/
-    done_cdx: &done_cdx ./done/index.cdx
+    done_dir: &done_dir /data/done/
+    done_cdx: &done_cdx /data/done/index.cdx
 
-    dedup_db: ./dedup.db
+    dedup_db: /data/dedup.db
     proxy: &proxyhostport http://localhost:9001
     update_freq: 5
 
-    recorder_exec: 'warcprox -z -p 9001 -d ./recording/ --rollover-idle-time 60 -j ./dedup.db --read-buff-size 1000000 -n rec --certs-dir ./certs/ --base32 --cacert ./ca-cert.pem'
+    recorder_exec: 'warcprox -z -p 9001 -d /data/recording/ --rollover-idle-time 60 -j /data/dedup.db --read-buff-size 1000000 -n rec --certs-dir ./certs/ --base32 --cacert ./ca-cert.pem'
     pywb_exec: 'uwsgi uwsgi.ini'
 
 
