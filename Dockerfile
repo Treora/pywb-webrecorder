@@ -6,9 +6,12 @@ RUN apk add linux-headers libffi-dev openssl-dev
 
 WORKDIR /app
 
+# We use multiple requirements-files to not invalidate the whole cache
 COPY requirements.txt requirements.txt
-
 RUN pip install -r requirements.txt
+
+COPY requirements2.txt requirements2.txt
+RUN pip install -r requirements2.txt
 
 COPY . .
 
